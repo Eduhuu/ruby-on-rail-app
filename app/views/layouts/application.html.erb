@@ -11,8 +11,27 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="h-screen">
+    <header class="h-[5%] px-8 py-2 bg-gray-200">
+      <nav class="h-full">
+        <div class="h-full flex justify-between items-center">
+          <div>
+            <a href="/">
+              <p>Logo</p>
+            </a>
+          <div class="flex gap-4 items-center">
+            <a href="#">
+              <p>perfil</p>
+            </a>
+            <a href="#">
+              <p>admin</p>
+            </a>
+          </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="min-h-[90%] px-8 py-4">
       <%= yield %>
     </main>
   </body>

@@ -1,19 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  lastname: MyString
-  email: MyString
-  password: MyString
-  rol: MyString
-  img: MyString
+eduardo:
+  name: Eduardo
+  lastname: Suarez
+  email: eduardosuarez.c97@gmail.com
+  password: contrasena
+  rol: admin
   blocked: false
 
-two:
-  name: MyString
-  lastname: MyString
-  email: MyString
-  password: MyString
-  rol: MyString
-  img: MyString
+daniel:
+  name: Daniel
+  lastname: Suarez
+  email: dnaiel@gmail.com
+  password: contrasena
+  rol: user
   blocked: false

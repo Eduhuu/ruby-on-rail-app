@@ -1,13 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  image: MyString
-  content: MyString
+publication_one:
+  title: Publicacion 1
+  content: Contenido de publicacion 1
+  user_id: eduardo
   blocked: false
 
-two:
-  title: MyString
-  image: MyString
-  content: MyString
+publication_two:
+  title: Publicacion 2
+  content: Contenido de publicacion 2
+  user_id: eduardo
+  blocked: false
+
+publication_three:
+  title: Publicacion 3
+  content: Contenido de publicacion 3
+  user_id: daniel
   blocked: false

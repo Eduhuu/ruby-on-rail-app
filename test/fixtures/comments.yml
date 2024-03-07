@@ -1,7 +1,12 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  content: MyString
+  content: Comentario 1
+  user_id: eduardo
+  publication_id: publication_one
+
 
 two:
-  content: MyString
+  content: comentario 2
+  user_id: dnaiel
+  publication_id: publication_one

@@ -1,3 +1,20 @@
 <div>
   <h1 class="font-bold text-4xl">Home</h1>
+   <%= link_to "Crear publicaciones", new_product_path%>
+  <%@publications.each do |publication| %>
+    <div class="flex flex-col gap-4 px-8 py-4 rounded">
+      <a  class="flex justify-start gap-2">
+        <div class="flex gap-1">
+          <p><%=publication.user.name%></p>
+          <p><%=publication.user.lastname%></p>
+        </div>
+      </a>
+      <%= link_to publication_path(publication.id) do %>
+        <div class="flex flex-col gap-0">
+          <p class="max-w-[25vw]"><%= publication.title%></p>
+          <small class="max-w-[25vw]"><%= publication.content%></small>
+        </div>
+      <%end%>
+    </div>
+  <%end%>
 </div>
