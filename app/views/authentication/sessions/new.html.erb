@@ -1,0 +1,13 @@
+<h1>Log in</h1>
+ <%# <%= link_to "Volver", "/"%>
+<%= form_with(url: sessions_path) do |form| %>
+    <div>
+        <%= form.label :email %>
+        <%= form.email_field :email %>
+    </div>
+    <div>
+         <%= form.label :password %>
+        <%= form.password_field :password %>
+    </div>
+    <%= form.submit%>
+<%end%> 

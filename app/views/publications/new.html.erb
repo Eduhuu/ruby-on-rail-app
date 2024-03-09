@@ -1,6 +1,9 @@
 <h1>CREAR PUBLICACION</h1>
  <%= link_to "Volver", "/"%>
 <%= form_with model: @publication do |form| %>
+    <% @publication.errors.full_messages.each do |error|%>
+        <p><%= error%></p>
+    <%end%>
     <%= form.label :title %>
     <%= form.text_field :title %>
     <%= form.label :content %>
