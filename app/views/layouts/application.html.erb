@@ -20,12 +20,11 @@
               <p>Logo</p>
             </a>
           <div class="flex gap-4 items-center">
-            <a href="#">
-              <p>perfil</p>
-            </a>
+            <%= link_to "Perfil", users_path+"/"+Current.user.id.to_s if Current.user%>
             <a href="#">
               <p>admin</p>
             </a>
+            <%= link_to "Cerrar sesion", sessions_path + "/0", data:{turbo_method: :delete} if Current.user%>
           </div>
           </div>
         </div>
@@ -33,6 +32,8 @@
     </header>
     <main class="min-h-[90%] px-8 py-4">
       <%= yield %>
+      <%=notice%>
+      <%=alert%>
     </main>
   </body>
 </html>

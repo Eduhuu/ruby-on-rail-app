@@ -1,16 +1,18 @@
 <div>
   <h1 class="font-bold text-4xl">Home</h1>
-   <%= link_to "Crear publicaciones", new_product_path%>
+   <%= link_to "Crear publicaciones", new_publication_path%>
   <%@publications.each do |publication| %>
     <div class="flex flex-col gap-4 px-8 py-4 rounded">
-      <a  class="flex justify-start gap-2">
+      <%= link_to user_path(publication.user.id) do%>
         <div class="flex gap-1">
+          <%= image_tag publication.user.img ,class: 'rounded' if publication.user.img.attached?%>
           <p><%=publication.user.name%></p>
           <p><%=publication.user.lastname%></p>
         </div>
-      </a>
+      <%end%> 
       <%= link_to publication_path(publication.id) do %>
         <div class="flex flex-col gap-0">
+          <%= image_tag publication.image ,class: 'w-[33%] rounded' if publication.image.attached?%>
           <p class="max-w-[25vw]"><%= publication.title%></p>
           <small class="max-w-[25vw]"><%= publication.content%></small>
         </div>

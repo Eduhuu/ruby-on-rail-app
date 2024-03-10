@@ -1,3 +1,37 @@
 <h1>Detalle</h1>
-<p><%=@publication.title%></p>
-<p><%=@publication.content%></p>
+<div class="flex justify-between">
+    <div>
+        <%=link_to "Editar publicacion", edit_publication_path(@publication)  if Current.user.id.to_s ==  @publication.user.id.to_s %>
+        <%=link_to "Eliminar publicacion", publication_path(@publication), data:{
+            turbo_method: :delete
+        }  if Current.user.id.to_s ==  @publication.user.id.to_s%>
+        <%= image_tag @publication.image if @publication.image.attached?%>
+        <p><%=@publication.title%></p>
+        <p><%=@publication.content%></p>
+    </div>
+    <div>
+        <% @publication.comments.each do |comment|%>
+            <div>
+                <div>
+                    <div>
+                        <%= image_tag comment.user.img if comment.user.img.attached?%>
+                        <%= comment.user.name%>
+                        <%=link_to "Eliminar comentario", "/comments/"+comment.id.to_s, data:{
+                            turbo_method: :delete
+                        }%>
+                    </div>
+                </div>
+                <%= comment.content%>
+            </div>
+        <% end %>
+        <%= form_with model: @comment, url:"/comments/"+@publication.id.to_s  do |f| %>
+                <div>
+                    <%= f.label :content %>
+                    <%= f.text_field :content%>
+                </div>
+                <div>
+                    <%= f.submit "Create Comment" %>
+                </div>
+        <% end %>
+    </div>
+</div>

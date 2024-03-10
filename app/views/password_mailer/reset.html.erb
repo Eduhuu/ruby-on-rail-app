@@ -1,0 +1,3 @@
+Hola <%params[:user].email %>
+Para reiniciar tu contrasena clickear aqui.
+<%= link_to  "Recuperar contrasena",password_reset_edit_url(token:@token) %>

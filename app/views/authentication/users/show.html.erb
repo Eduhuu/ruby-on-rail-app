@@ -1,0 +1,8 @@
+<h1>Detalle de usuario</h1>
+
+<%= link_to "Editar perfil", edit_user_path(params[:id]) if Current.user.id.to_s == params[:id].to_s%>
+
+<%= image_tag @user.img ,class: 'w-[33%] rounded' if @user.img.attached?%>
+<%=@user.name%>
+<%=@user.lastname%>
+<%=@user.email%>

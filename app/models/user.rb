@@ -1,6 +1,9 @@
 class User < ApplicationRecord
+    
+    has_one_attached :img
 
     has_secure_password
+
 
     has_many :publications, dependent: :restrict_with_exception, dependent: :destroy
     has_many :comments, dependent: :restrict_with_exception, dependent: :destroy   

@@ -1,0 +1,9 @@
+<h1>Recuperar contrasena</h1>
+
+<%= form_with url: password_reset_path do |form|%>
+    <div>
+        <%= form.label :email %>
+        <%= form.email_field :email %>
+    </div>
+    <%= form.submit%>
+<% end%>

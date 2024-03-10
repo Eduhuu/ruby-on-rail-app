@@ -1,5 +1,5 @@
-<h1>CREAR USUARIO</h1>
- <%= link_to "Volver", new_session_path %>
+<h1>Editar de usuario</h1>
+<%= link_to "Volver", "/"%>
 <%= form_with model: @user do |form| %>
 <% @user.errors.full_messages.each do |error|%>
         <p><%= error%></p>
@@ -19,10 +19,6 @@
     <div>
         <%= form.label :email %>
         <%= form.email_field :email %>
-    </div>
-    <div>
-         <%= form.label :password %>
-        <%= form.password_field :password %>
     </div>
     <%= form.submit%>
 <%end%>

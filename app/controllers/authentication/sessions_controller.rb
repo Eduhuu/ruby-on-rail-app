@@ -2,6 +2,7 @@ class Authentication::SessionsController < ApplicationController
 
     skip_before_action :protect_route
     #  skip_before_action :protect_route only [:new, :create]
+    
     def new
     end
     def create
@@ -13,18 +14,12 @@ class Authentication::SessionsController < ApplicationController
         else
             redirect_to sessions_path
         end
-
-        # @user=User.new(user_params)
-        # puts @user.inspect
-        # if @user.save
-        #     redirect_to "/"
-        # else
-        #     render :new, status: :unprocessable_entity
-        # end
     end
-    # private 
-    # def user_params
-    #     params.require(:user).permit(:email,:password)
-    # end
+
+    def destroy
+        session.delete(:user_id)
+        redirect_to sessions_path
+    end
+
 
 end

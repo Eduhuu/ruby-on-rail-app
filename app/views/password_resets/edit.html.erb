@@ -1,0 +1,9 @@
+<h1>Cambia tu contrasena</h1>
+
+<%= form_with model:@user, url: password_reset_edit_path(token: params[:token]) do |form|%>
+    <div>
+        <%= form.label :password %>
+        <%= form.password_field :password %>
+    </div>
+    <%= form.submit%>
+<% end%>
