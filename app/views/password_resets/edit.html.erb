@@ -1,9 +1,15 @@
-<h1>Cambia tu contrasena</h1>
-
-<%= form_with model:@user, url: password_reset_edit_path(token: params[:token]) do |form|%>
-    <div>
-        <%= form.label :password %>
-        <%= form.password_field :password %>
+<div class="h-full pb-20 flex flex-col justify-center items-center">
+    <div class="flex flex-col gap-4 items-center bg-[#D9D9D9] px-6 py-4 shadow border border-1 border-[#D9D9D9] rounded">
+        <h1>Restaurar contrasena</h1>
+        <%= form_with model:@user, url: password_reset_edit_path(token: params[:token]), html:{class:"flex flex-col gap-4"} do |form|%>
+            <small class="">
+                Restaure su contraseña.
+            </small>
+            <div class="flex flex-col gap-1">
+                <%= form.label :password, "Nueva contrasena" %>
+                <%= form.password_field :password, class:"border border-1 border-gray-300 rounded" %>
+            </div>
+            <%= form.submit "Confirmar" ,class:"text-sm self-end border border-1 border-black rounded py-2 px-4"%>
+        <% end%>
     </div>
-    <%= form.submit%>
-<% end%>
+</div>

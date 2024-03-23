@@ -1,28 +1,43 @@
-<h1>CREAR USUARIO</h1>
- <%= link_to "Volver", new_session_path %>
-<%= form_with model: @user do |form| %>
-<% @user.errors.full_messages.each do |error|%>
-        <p><%= error%></p>
-    <%end%>
-<div>
-        <%= form.label :img %>
-        <%= form.file_field :img %>
+<div class="h-full pb-20 flex flex-col justify-center items-center">
+    <div class="flex flex-col gap-2 items-center bg-[#D9D9D9] px-8 py-6 shadow border border-1 border-[#D9D9D9] rounded">
+        <div class="w-full flex gap-4 justify-start items-center">
+            <small>
+                <%= link_to "Volver", new_session_path %>
+            </small>
+            <big>
+                <h1 class="text-xl">Registro</h1>
+            </big>
+        </div>
+        <%= form_with model: @user, html:{class:"flex flex-col gap-4"} do |form| %>
+            <% @user.errors.full_messages.each do |error|%>
+                <p><%= error%></p>
+            <%end%>
+            <div class="flex flex-col gap-2 items-center">
+                <%= form.label :img, "Foto de perfil", class:"text-center" %>
+                <%= form.file_field :img, label:"Foto de perfil" , class:"hidden"%>
+                <img id="avatar-register-img" class="w-[7em] h-[7em] rounded-full cursor-pointer border-gray-400 border-1 border"/>
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+                <div class="flex flex-col gap-2">
+                    <%= form.label :name %>
+                    <%= form.text_field :name, class:"border border-1 border-gray-300 rounded", placeholder:"Nombre" %>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <%= form.label :lastname %>
+                    <%= form.text_field :lastname, class:"border border-1 border-gray-300 rounded", placeholder:"Apellido" %>
+
+                </div>
+                <div class="flex flex-col gap-2">
+                    <%= form.label :email %>
+                    <%= form.email_field :email, class:"border border-1 border-gray-300 rounded", placeholder:"Correo"  %>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <%= form.label :password %>
+                    <%= form.password_field :password, class:"border border-1 border-gray-300 rounded", placeholder:"Contrasena" %>
+                </div>
+            </div>
+            <%= form.submit "Registrar", class:"text-sm self-end border border-1 border-black rounded py-2 px-4"%>
+        <%end%>
     </div>
-    <div>
-        <%= form.label :name %>
-        <%= form.text_field :name %>
-    </div>
-    <div>
-        <%= form.label :lastname %>
-        <%= form.text_field :lastname %>
-    </div>
-    <div>
-        <%= form.label :email %>
-        <%= form.email_field :email %>
-    </div>
-    <div>
-         <%= form.label :password %>
-        <%= form.password_field :password %>
-    </div>
-    <%= form.submit%>
-<%end%>
+    <script src="<%= asset_path('register.js') %>"></script>
+</div>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Motor::Admin => '/motor_admin'
   root "home#index"
 
   get "/publications/new", to: "publications#new", as: :new_publication # mostrar formulario de crear

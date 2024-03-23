@@ -15,22 +15,18 @@
     <header class="h-[5%] px-8 py-2 bg-gray-200">
       <nav class="h-full">
         <div class="h-full flex justify-between items-center">
-          <div>
-            <a href="/">
-              <p>Logo</p>
-            </a>
+          <a href="/">
+            <p>Logo</p>
+          </a>
           <div class="flex gap-4 items-center">
             <%= link_to "Perfil", users_path+"/"+Current.user.id.to_s if Current.user%>
-            <a href="#">
-              <p>admin</p>
-            </a>
-            <%= link_to "Cerrar sesion", sessions_path + "/0", data:{turbo_method: :delete} if Current.user%>
-          </div>
+            <%= link_to "Admin", "/motor_admin/" if Current.user && Current.user.rol == "admin"%>
+            <%= link_to "Cerrar sesion", sessions_path + "/0", data:{turbo_method: :delete} if Current.user%>    
           </div>
         </div>
       </nav>
     </header>
-    <main class="min-h-[90%] px-8 py-4">
+    <main class="h-[90%] px-8 py-4">
       <%= yield %>
       <%=notice%>
       <%=alert%>

@@ -1,8 +1,29 @@
-<h1>Detalle de usuario</h1>
+<div class="h-full pb-20 flex flex-col justify-center items-center">
+    <div class="w-[33vw] flex flex-col gap-4 items-center bg-[#D9D9D9] px-8 py-6 shadow border border-1 border-[#D9D9D9] rounded">
+        <div class="w-full flex justify-between">
+            <%= link_to "Inicio", "/", class:"self-start" if Current.user.id.to_s == params[:id].to_s%>
+            <%= link_to "Editar perfil", edit_user_path(params[:id]), class:"self-start" if Current.user.id.to_s == params[:id].to_s%>
+        </div>
+        <div class="flex flex-col gap-3 items-center">
+            <p>Foto de perfil</p>
+            <%= image_tag @user.img ,class: 'w-[8em] h-[8em] rounded-full' if @user.img.attached?%>
+        </div>
+        <div class="w-full grid grid-cols-2 gap-3">
+            <div class="flex flex-col gap-2">
+                <p>Nombre</p>
+                <p class="bg-slate-100 px-3 py-2 rounded">
+                    <%=@user.name%>
+                </p>
+            </div>
+            <div class="flex flex-col gap-2">
+                <p>Apellido</p>
+                <p class="bg-slate-100 px-3 py-2 rounded"><%=@user.lastname%></p>
+            </div>
+            <div class="flex flex-col gap-2 col-span-2">
+                <p>Correo</p>
+                <p class="bg-slate-100 px-3 py-2 rounded"><%=@user.email%></p>
+            </div>
+        </div>
+    </div>
+</div>
 
-<%= link_to "Editar perfil", edit_user_path(params[:id]) if Current.user.id.to_s == params[:id].to_s%>
-
-<%= image_tag @user.img ,class: 'w-[33%] rounded' if @user.img.attached?%>
-<%=@user.name%>
-<%=@user.lastname%>
-<%=@user.email%>

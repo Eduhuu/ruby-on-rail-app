@@ -1,24 +1,33 @@
-<h1>Editar de usuario</h1>
-<%= link_to "Volver", "/"%>
-<%= form_with model: @user do |form| %>
-<% @user.errors.full_messages.each do |error|%>
-        <p><%= error%></p>
-    <%end%>
-<div>
-        <%= form.label :img %>
-        <%= form.file_field :img %>
+<div class="h-full pb-20 flex flex-col justify-center items-center">
+    <div class="w-[33vw] flex flex-col gap-4 items-center bg-[#D9D9D9] px-8 py-6 shadow border border-1 border-[#D9D9D9] rounded">
+        <div class="w-full flex justify-between">
+            <%= link_to "Volver", user_path(Current.user.id), class:"self-start"%>
+        </div>
+        <%= form_with model: @user,  html:{class:"w-full flex flex-col gap-3"} do |form| %>
+            <% @user.errors.full_messages.each do |error|%>
+                <p><%= error%></p>
+            <%end%>
+            <div class="flex flex-col gap-3 items-center">
+                <p>Foto de perfil</p>
+                <%= image_tag @user.img ,class: 'w-[8em] h-[8em] rounded-full', id:"user_image_tag" if @user.img.attached?%>
+                <%= form.file_field :img, class:"hidden" %>
+            </div>
+            <div class="w-full grid grid-cols-2 gap-3">
+                <div class="flex flex-col gap-2">
+                    <%= form.label :name %>
+                    <%= form.text_field :name, class:"bg-slate-100 px-3 py-2 rounded", placeholder:"Nombre" %>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <%= form.label :lastname %>
+                    <%= form.text_field :lastname, class:"bg-slate-100 px-3 py-2 rounded", placeholder:"Apellido" %>
+                </div>
+                <div class="flex flex-col gap-2 col-span-2">
+                        <%= form.label :email %>
+                        <%= form.email_field :email, class:"bg-slate-100 px-3 py-2 rounded", placeholder:"Correo" %>
+                </div>
+            </div>
+            <%= form.submit "Editar", class:"text-sm self-end border border-1 border-black rounded py-2 px-4"%>
+        <%end%>
     </div>
-    <div>
-        <%= form.label :name %>
-        <%= form.text_field :name %>
-    </div>
-    <div>
-        <%= form.label :lastname %>
-        <%= form.text_field :lastname %>
-    </div>
-    <div>
-        <%= form.label :email %>
-        <%= form.email_field :email %>
-    </div>
-    <%= form.submit%>
-<%end%>
+    <script src="<%= asset_path('edit user.js') %>"></script>
+</div>

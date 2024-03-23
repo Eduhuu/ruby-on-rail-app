@@ -1,5 +1,8 @@
 class HomeController < ApplicationController
+
+  include Pagy::Backend
+
   def index
-    @publications = Publication.all
+    @pagy, @records = pagy(Publication.all)
   end
 end

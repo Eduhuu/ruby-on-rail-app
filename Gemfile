@@ -67,3 +67,7 @@ group :test do
 end
 
 gem "tailwindcss-rails", "~> 2.3"
+
+gem "motor-admin", "~> 0.4.26"
+
+gem "pagy", "~> 7.0"

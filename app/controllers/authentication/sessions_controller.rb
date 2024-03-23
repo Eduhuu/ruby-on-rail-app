@@ -8,17 +8,22 @@ class Authentication::SessionsController < ApplicationController
     def create
         @user = User.find_by("email = :email",{email:params[:email]})
 
+        if @user.blocked
+            redirect_to new_session_path, alert:"Usuario bloqueado."    
+            return    
+        end
+
         if @user&.authenticate(params[:password])
             session[:user_id] = @user.id
             redirect_to "/"
         else
-            redirect_to sessions_path
+            redirect_to new_session_path, alert:"Credenciales incorrectas." 
         end
     end
 
     def destroy
         session.delete(:user_id)
-        redirect_to sessions_path
+        redirect_to new_session_path
     end
 
 
