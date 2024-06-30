@@ -12,9 +12,9 @@
             <%end%> 
             <small>
                 <%=link_to "Editar publicacion", edit_publication_path(@publication)  if Current.user.id.to_s ==  @publication.user.id.to_s %>
-                <%=link_to "Eliminar publicacion", publication_path(@publication), data:{
-                    turbo_method: :delete
-                }  if Current.user.id.to_s ==  @publication.user.id.to_s%>
+                <%= form_with model: @publication, method: :delete, html: { class: "flex flex-col gap-4" } do |form| %>
+                    <%= hidden_field_tag :_method, :delete %>  <%= form.submit "Eliminar", class:"text-sm self-end bg-red-500 text-white rounded py-2 px-4" %>
+                <% end %>
             </small>
         </div>
         <%= image_tag @publication.image if @publication.image.attached?%>

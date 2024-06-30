@@ -9,6 +9,11 @@ Rails.application.routes.draw do
   get "publications/:id/edit", to: "publications#edit", as: :edit_publication
   patch "publications/:id", to: "publications#update" # metodo para editar
   delete "publications/:id", to: "publications#destroy", as: :delete_publication# metodo para eliminar
+  namespace :authentication, path:'', as:'' do
+    resources :users, only: [:new,:create,:show, :edit, :update]
+    resources :sessions, only: [:new, :create, :destroy]
+  end 
+  
   post "comments/:id", to: "comments#create"
   delete "comments/:id", to: "comments#destroy", as: :delete_comments# metodo para eliminar
   
@@ -17,8 +22,6 @@ Rails.application.routes.draw do
   get "password/reset/edit", to: "password_resets#edit"
   patch "password/reset/edit", to: "password_resets#update"
 
-  namespace :authentication, path:'', as:'' do
-    resources :users, only: [:new,:create,:show, :edit, :update]
-    resources :sessions, only: [:new, :create, :destroy]
-  end  
+  
+
 end
