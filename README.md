@@ -1,8 +1,6 @@
 # Proyecto desarrollado con Ruby on rails
 ## Seguir los siguientes pasos para instalar correctamente el proyecto:
 
-### Debemos tener instalados Ruby on rails
-
 Instalamos un manejador de versiones de Ruby:
 
     sudo apt-get install software-properties-common
@@ -18,11 +16,11 @@ Si se presenta el error de ```Command not found```
 
     echo 'source "/etc/profile.d/rvm.sh"' >> ~/.bashrc
 
-Reinicie
+Reinicie el equipo.
 
 Luego instalamos la version de ruby que dice el Gemfile
 
-    rvm install ruby-3.3.0"
+    rvm install "ruby-3.3.0"
 
 Inslatamos Ruby on rails:
 
@@ -43,27 +41,12 @@ Si no esta corriendo reinicie postgres con:
     
     sudo service postgresql restart
 
-### El proyecto utiliza una base de datos con las siguientes caracteristicas:
-```
-user: 'postgres',
-host: 'localhost',
-database: 'laravel_db',
-password: 'postgres',
-port: 5432
-```
-
-Por lo que debemos cambiar las credenciades del usuarios postgres
+Para hacer el setup del proyecto debemos crear la base de datos que utilizara la aplicacion.
 
 - Utilizamos el usuario 'postgres' con el comando en la terminal:
 
     ```
     sudo -i -u postgres
-    ```
-
-- Para crear la nueva base de datos utilizamos:
-
-    ```
-    createdb laravel_db
     ```
 
 - Ejecutamos postgres con el comando:
@@ -72,21 +55,63 @@ Por lo que debemos cambiar las credenciades del usuarios postgres
     psql
     ```
 
+- Creamos el usuario 'root'
+
+    ```
+    CREATEUSER root;
+    ```
+
 - Para cambiar la contrasena utilizamos:
     
     ```
-    ALTER USER postgres WITH PASSWORD 'postgres';
+    ALTER USER root WITH PASSWORD 'postgres';
+    ```
+
+- Le damos los siguientes permisos:
+
+    ```
+    ALTER USER username WITH LOGIN;
+    ALTER USER username CREATEDB;
     ```
 
 - Nos salimos de la base de datos con: 
     
     ```
+    \q
+    ```
+
+- Nos salimos de el usuario postgres
+
+    ```
     exit
     ```
 
-- Por ultimo queda crear las migraciones:
+- Creamos la base de datos con:
+
+    ```
+    bin/rails db:create
+    ```
+
+- Corremos un set up que trae rails para ver si todo quedo instalado correctamente:
+
+    ```
+    bin/setup
+    ```
+
+- Corremos las migraciones:
+
+    ```
+    rake db:migrate
+    ```
+
+- Por ultimo tenemos que instalar ```tailwind``` para ello:
+
+    ```
+    ./bin/rails tailwindcss:install
+    ```
+
 
 ### Ejecutamos el proyecto con:
 
-    php artisan serve --host=0.0.0.0 --port=8000
+    rails s
 

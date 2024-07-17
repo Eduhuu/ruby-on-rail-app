@@ -1,4 +1,5 @@
 class PublicationsController < ApplicationController
+  skip_before_action :protect_route, only: [:show,]
   def show
     @publication = Publication.find(params[:id])
   end

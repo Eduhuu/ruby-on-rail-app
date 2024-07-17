@@ -22,6 +22,7 @@
             <%= link_to "Perfil", users_path+"/"+Current.user.id.to_s if Current.user%>
             <%= link_to "Admin", "/motor_admin/" if Current.user && Current.user.rol == "admin"%>
             <%= link_to "Cerrar sesion", sessions_path + "/0", data:{turbo_method: :delete} if Current.user%>    
+            <%= link_to "Iniciar sesion", "sessions/new" if !Current.user%>
           </div>
         </div>
       </nav>
